@@ -1,0 +1,16 @@
+--- AviSynthPlus-3.7.3/avs_core/filters/exprfilter/exprfilter.cpp.orig	2023-07-16 02:44:05.000000000 +0200
++++ AviSynthPlus-3.7.3/avs_core/filters/exprfilter/exprfilter.cpp	2024-05-27 21:09:26.648184152 +0200
+@@ -102,11 +102,11 @@
+ #include "../../convert/convert_helper.h"
+ #include "avs/alignment.h"
+ 
+-#if (defined(_WIN64) && (defined(_M_AMD64) || defined(_M_X64))) || defined(__x86_64__)
++#if (defined(_WIN64) && (defined(_M_AMD64) || defined(_M_X64))) || (defined(__x86_64__) && defined(__LP64__))
+ #define JITASM64
+ #endif
+ 
+-#ifdef INTEL_INTRINSICS
++#if defined(INTEL_INTRINSICS) && !(defined(__x86_64__) && defined(__ILP32__))
+ #define VS_TARGET_CPU_X86
+ #endif
+ #ifdef AVS_WINDOWS

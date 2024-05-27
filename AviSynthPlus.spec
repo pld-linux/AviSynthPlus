@@ -12,6 +12,7 @@ Group:		Libraries
 #Source0Download: https://github.com/AviSynth/AviSynthPlus/releases
 Source0:	https://github.com/AviSynth/AviSynthPlus/archive/v%{version}/%{name}-%{version}.tar.gz
 # Source0-md5:	e18f562c225aa04792f318a2d3039418
+Patch0:		%{name}-x32.patch
 URL:		https://github.com/AviSynth/AviSynthPlus
 BuildRequires:	DevIL-devel
 BuildRequires:	cmake >= 3.6.2
@@ -57,6 +58,7 @@ Dokumentacja API biblioteki AviSynthPlus.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 install -d build
